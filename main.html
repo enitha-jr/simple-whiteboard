@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whiteboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="toolbar">
+        <div class="tool" id="pen" title="Pen">
+            <div class="icon">✏️</div>
+            <span class="label">Pen</span>
+        </div>
+        <div class="tool" id="eraser" title="Eraser">
+            <div class="icon">🧽</div>
+            <span class="label">Eraser</span>
+        </div>
+        <div class="tool" id="highlighter" title="Highlighter">
+            <div class="icon">🖨️</div>
+            <span class="label">Highlighter</span>
+        </div>
+        <input type="color" id="color-picker" title="Color Picker">
+        <div class="tool" id="add-slide" title="Add Slide">
+            <div class="icon">➕</div>
+            <span class="label">Add Slide</span>
+        </div>
+        <input type="file" id="upload-slide" accept="image/*" title="Upload Slide">
+    </div>
+    <div class="main-container">
+        <div class="slide-preview" id="slide-preview"></div>
+        <div class="canvas-container">
+            <canvas id="canvas"></canvas>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    overflow-x: auto;
+}
+
+.tool, #color-picker, #upload-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    font-size: 14px;
+    min-width: 80px;
+}
+
+.tool .icon {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.tool:hover, #color-picker:hover, #upload-slide:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+#color-picker, #upload-slide {
+    padding: 5px;
+    min-width: 50px;
+}
+
+.main-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+.slide-preview {
+    width: 220px; /* Fixed width for preview */
+    max-height: 600px;
+    overflow-y: auto;
+    border-right: 1px solid #ccc;
+    padding-right: 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Ensure it's positioned within the container */
+}
+
+.slide-preview .slide {
+    width: 90%;
+    margin-bottom: 10px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    border: 2px solid transparent; /* Transparent border by default */
+}
+
+.slide-preview .slide .slide-number {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: #ffffff;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    color: #333;
+}
+
+.slide-preview .slide.active {
+    border-color: #FF5722; /* Orange border for active slide */
+    box-shadow: 0 0 15px rgba(255, 87, 34, 0.5); /* Glow effect */
+    background-color: #e8f5e9; /* Light green background to highlight the active slide */
+}
+
+.slide-preview .slide canvas {
+    width: 100%;
+    margin: 0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.slide-preview .slide canvas:hover {
+    transform: scale(1.1);
+}
+
+/* Highlight selected tool */
+.tool.active {
+    background-color: #3e8e41; /* Darker green to indicate selection */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Glow effect */
+    transform: scale(1.1);
+}
+
+.context-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    z-index: 1001;
+}
+
+.context-menu .menu-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.context-menu .menu-item:hover {
+    background-color: #f0f0f0;
+}
+
+.canvas-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 0; /* Allow canvas to shrink if necessary */
+}
+
+canvas {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    cursor: crosshair;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .toolbar {
+        flex-direction: column;
+    }
+    
+    .tool, #color-picker, #upload-slide {
+        min-width: auto;
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .tool .icon {
+        font-size: 18px;
+    }
+
+    .main-container {
+        flex-direction: column;
+        gap: 10px;
+        margin: 10px;
+    }
+
+    .slide-preview {
+        max-width: 100%;
+        padding-right: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .toolbar {
+        padding: 5px;
+    }
+    
+    .tool, #color-picker, #upload-slide {
+        padding: 5px;
+        font-size: 10px;
+    }
+
+    .tool .icon {
+        font-size: 16px;
+    }
+
+    .slide-preview {
+        max-width: 100%;
+        padding-right: 0;
+    }
+    
+}
